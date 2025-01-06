@@ -32,17 +32,30 @@ public class MyEntityController {
         return entity.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/local_env")
     public MyEntity createEntity( @Valid @RequestBody MyEntityDto entity) {
         try{
             MyEntity mEntity = new MyEntity();
-            BeanUtils.copyProperties(entity, mEntity);
+            mEntity.setName(entity.getName());
+            mEntity.setDescription(entity.getDescription());
             return service.saveEntity(mEntity);
         }catch(Exception e){
             e.printStackTrace();
         }
         return null;
     }
+
+    // @PostMapping("/local_dev")
+    // public MyEntity createEntity2( @Valid @RequestBody MyEntityDto entity) {
+    //     try{
+    //         MyEntity mEntity = new MyEntity();
+    //         BeanUtils.copyProperties(entity, mEntity);
+    //         return service.saveEntity(mEntity);
+    //     }catch(Exception e){
+    //         e.printStackTrace();
+    //     }
+    //     return null;
+    // }
 
 }
 

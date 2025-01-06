@@ -10,13 +10,7 @@ public class MyEntityDto {
 
     
 
-    public MyEntityDto(Long id,
-            @NotNull(message = "Name cannot be null") @NotBlank(message = "Name cannot be blank") String name,
-            @NotEmpty(message = "Description cannot be empty") String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-    }
+   
 
     private Long id;
 
