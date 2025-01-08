@@ -33,11 +33,12 @@ public class MyEntityController {
     }
 
     @PostMapping("/local_env")
-    public MyEntity createEntity( @Valid @RequestBody MyEntityDto entity) {
+    public MyEntity createEntity( @Valid @RequestBody MyEntityDto myEntityDto) {
         try{
             MyEntity mEntity = new MyEntity();
-            mEntity.setName(entity.getName());
-            mEntity.setDescription(entity.getDescription());
+            mEntity.setName(myEntityDto.getName());
+            mEntity.setDescription(myEntityDto.getDescription());
+            mEntity.setEmail(myEntityDto.getEmail());
             return service.saveEntity(mEntity);
         }catch(Exception e){
             e.printStackTrace();
